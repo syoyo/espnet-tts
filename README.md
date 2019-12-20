@@ -2,17 +2,26 @@
 
 Work in progress.
 
-## Japanese TTS
+## Setup
 
-### Setup
+Assume `espnet` https://github.com/espnet/espnet is cloned into `../espnet`.
+
+```
++-+- espnet
+  +- espnet-tts
+```
+
+building kaldi in espnet is not required.
 
 Assume (mini)conda is installed.
-Create conda env for ESPnet.
+Create conda env for ESPNet.
 
 ```
 $ conda create -n espnet-tts python=3.7
 $ conda activate espnet-tts
 ```
+
+## Japanese TTS
 
 ### Install python modules
 
@@ -29,10 +38,7 @@ $ pip install chainer
 $ ./build-jp-deps.sh
 ```
 
-
 ### Download models
-
-Assume espnet repo is located in `../espnet`
 
 ```
 # download pretrained models(both for Tacotron2 and Transformer)
@@ -44,3 +50,11 @@ Assume espnet repo is located in `../espnet`
     https://drive.google.com/open?id=1mEnZfBKqA4eT6Bn0eRZuP6lNzL-IL3VD downloads tar.gz
 ```
 
+### Run inference
+
+Set LD_LIBRARY_PATH to libopenjtalks(`dist/lib`), then run python code.
+
+```
+$ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:./dist/lib
+$ python run-ja-tts-inference.py
+```

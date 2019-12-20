@@ -10,10 +10,17 @@ use_cuda = torch.cuda.is_available()
 device = torch.device('cuda' if use_cuda else 'cpu')
 
 # Transformer version
+#dict_path = "downloads/data/lang_1phn/train_no_dev_units.txt"
+#model_path = "downloads/exp/train_no_dev_pytorch_train_pytorch_transformer_phn/results/model.last1.avg.best"
+#vocoder_path = "downloads/jsut.parallel_wavegan.v1/checkpoint-400000steps.pkl"
+#vocoder_conf = "downloads/jsut.parallel_wavegan.v1/config.yml"
+
+# Tacotron2 version
 dict_path = "downloads/data/lang_1phn/train_no_dev_units.txt"
-model_path = "downloads/exp/train_no_dev_pytorch_train_pytorch_transformer_phn/results/model.last1.avg.best"
+model_path = "downloads/exp/train_no_dev_pytorch_train_pytorch_tacotron2_phn/results/model.last1.avg.best"
 vocoder_path = "downloads/jsut.parallel_wavegan.v1/checkpoint-400000steps.pkl"
 vocoder_conf = "downloads/jsut.parallel_wavegan.v1/config.yml"
+
 
 # define E2E-TTS model
 from argparse import Namespace
@@ -65,7 +72,7 @@ print("Now ready to synthesize!")
 # ----------------------------------
 
 import time
-input_text = "日本語で好きな文章を入力してください"
+input_text = "弁護士又は弁護士法人でない者は、報酬を得る目的で訴訟事件、非訟事件及び審査請求、異議申立て、再審査請求等行政庁に対する不服申立事件その他一般の法律事件に関して鑑定、代理、仲裁若しくは和解その他の法律事務を取り扱い、又はこれらの周旋をすることを業とすることができない。ただし、この法律又は他の法律に別段の定めがある場合は、この限りでない。"
 
 with torch.no_grad():
     start = time.time()
